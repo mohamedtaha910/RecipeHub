@@ -44,15 +44,14 @@ class _FavouritePageState extends State<FavouritePage> {
             title: Row(
               children: [
                 // SizedBox(width: 8,),
+                widget.isInProfile == true?
                 IconButton(
                   onPressed: () {
-                    widget.isInProfile == true? Navigator.of(context).pop() : 
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
+                     Navigator.of(context).pop()  
+                    ;
                   },
                   icon: Icon(Icons.arrow_back_ios),
-                ),
+                ) : SizedBox.shrink(),
                 // SizedBox(width: 10,),
                 // Text('Favourite Meals',style: TextStyle(fontWeight: FontWeight.bold),),
                 SvgPicture.asset('assets/text/My Favorites.svg', height: 21),
@@ -61,7 +60,10 @@ class _FavouritePageState extends State<FavouritePage> {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ListView.builder(
+            child:
+            favMeals.isEmpty ? Center(
+              child: Text('No favourite meals yet!')) :
+             ListView.builder(
               physics: const BouncingScrollPhysics(),
               itemCount: favMeals.length,
               itemBuilder: (context, i) {

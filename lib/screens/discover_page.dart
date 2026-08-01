@@ -19,18 +19,15 @@ class DiscoverPage extends StatelessWidget {
         title: Row(
           // mainAxisSize: MainAxisSize.max,
           children: [
+            isInHomePage == true ?
             IconButton(
               onPressed: () {
-                isInHomePage == true
-                    ? Navigator.of(context).pop()
-                    : Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
+                
+                     Navigator.of(context).pop();
+                    
               },
               icon: Icon(Icons.arrow_back_ios),
-            ),
+            ) : SizedBox.shrink(),
 
             Expanded(
               child: GestureDetector(

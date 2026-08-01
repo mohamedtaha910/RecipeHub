@@ -26,10 +26,11 @@ class MyApp extends StatelessWidget {
         bottom: false,
         top: false,
         child: MaterialApp(
-          // theme: ThemeData(
-          //   brightness: Brightness.light,
-          //   // scaffoldBackgroundColor: const Color.fromARGB(184, 223, 229, 230),
-          // ),
+          theme: ThemeData(
+            brightness: Brightness.light,
+            // scaffoldBackgroundColor: const Color.fromARGB(184, 237, 240, 241),
+            scaffoldBackgroundColor: Colors.white,
+          ),
           debugShowCheckedModeBanner: false,
           home: HomePage(),
         ),

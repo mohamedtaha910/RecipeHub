@@ -8,12 +8,19 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 13,
+      ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: BorderRadius.circular(100),
         // color: Colors.grey.withAlpha(100),
         // color: kLightColor.withAlpha(80),
-        color: Colors.grey.shade300,
+        color: Colors.grey.shade200,
+        border: Border.all(
+          color: Colors.grey.shade300.withAlpha(200),
+          width: 0.4,
+        ),
       ),
 
       child: Row(
@@ -22,17 +29,19 @@ class CustomSearchBar extends StatelessWidget {
           SvgPicture.asset(
             'assets/icons/Search.svg',
             colorFilter: ColorFilter.mode(
-              Colors.black.withAlpha(115),
+              Colors.grey.shade600,
               BlendMode.srcIn,
+              
             ),
+            height: 22,
           ),
           // Icon(Icons.search,color: Colors.black.withAlpha(100)),
-          SizedBox(width: 12),
+          SizedBox(width: 16),
           Text(
-            'Search ',
+            'Search meals',
             style: TextStyle(
-              color: Colors.black.withAlpha(115),
-              fontSize: 20,
+              color: Colors.grey.shade600,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),
