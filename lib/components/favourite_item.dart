@@ -19,23 +19,29 @@ class FavouriteItem extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        // padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           // color: Colors.grey.withAlpha(78),
           color: Colors.grey.shade300,
+          // color: Colors.black.withAlpha(100),
           borderRadius: BorderRadius.circular(14),
+          // border: Border.all(color: Colors.black.withAlpha(50), width: 0.5),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(14),
+              borderRadius: BorderRadiusGeometry.only(
+                topLeft: Radius.circular(14),
+                bottomLeft: Radius.circular(14),
+              ),
               child: Image.network(
                 favMeal.image,
-                fit: BoxFit.fill,
+                // fit: BoxFit.fill,
                 // fit: BoxFit.cover,
-                width: 110,
-                height: 100,
+                width: 122,
+                height: 122,
               ),
             ),
             SizedBox(width: 16),
@@ -43,9 +49,10 @@ class FavouriteItem extends StatelessWidget {
             Expanded(
               child: Text(
                 favMeal.name,
+
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 16,
                 ),
                 softWrap: true,
                 maxLines: 2,
@@ -56,7 +63,7 @@ class FavouriteItem extends StatelessWidget {
 
             SvgPicture.asset(
               'assets/icons/Arrow Right - Small.svg',
-              height: 28,
+              height: 26,
             ),
           ],
         ),

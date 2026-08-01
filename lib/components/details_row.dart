@@ -12,10 +12,15 @@ class DetailsRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(6),
+            padding: EdgeInsets.all(7),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.grey.shade200,
+              // borderRadius: BorderRadius.circular(12),
+              shape: BoxShape.circle,
+              // color: Colors.grey.shade200,
+              border: Border.all(
+                color: Colors.black.withAlpha(100),
+                width: 0.6,
+              ),
             ),
             child: Icon(icon, size: 32, color: Colors.black54),
           ),
