@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -42,9 +44,9 @@ class _MealsGridState extends State<MealsGrid> {
             physics: BouncingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 24,
-              childAspectRatio: 0.86,
+              crossAxisSpacing: 13,
+              mainAxisSpacing: 16,
+              childAspectRatio: 0.85,
             ),
             itemCount: meals.length,
             itemBuilder: (context, index) {
@@ -58,23 +60,26 @@ class _MealsGridState extends State<MealsGrid> {
               //     );
               //   },
               //   child: Container(
+              //     // height: 500,
               //     margin: EdgeInsets.only(bottom: 2),
-              //     padding: EdgeInsets.only(bottom: 8),
+              //     // padding: EdgeInsets.only(bottom: 8 , ),
 
               //     decoration: BoxDecoration(
 
               //       borderRadius: BorderRadius.circular(borderRadius),
 
-              //       color: Color(0xFFE5E5E5),
+              //       // color: Color(0xFFE5E5E5),
+              //       color: Colors.grey.shade200,
               //       boxShadow: [
               //         BoxShadow(
-              //           color: Colors.black.withAlpha(60),
+              //           color: Colors.black.withAlpha(50),
               //           offset: Offset(0, 2),
               //           blurRadius: 4,
               //         ),
               //       ],
               //     ),
               //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
               //       children: [
               //         Expanded(
               //           child: Stack(
@@ -85,9 +90,9 @@ class _MealsGridState extends State<MealsGrid> {
               //                   topRight: Radius.circular(borderRadius),
               //                 ),
               //                 child: Image.network(
-              //                   // height: 200,
+              //                   // height: 500,
               //                   meal.image,
-              //                   fit: BoxFit.cover,
+              //                   // fit: BoxFit.cover,
               //                   width: double.infinity,
               //                 ),
               //               ),
@@ -121,23 +126,26 @@ class _MealsGridState extends State<MealsGrid> {
               //             ],
               //           ),
               //         ),
-              //         SizedBox(height: 12),
-              //         Container(
-              //           margin: EdgeInsets.symmetric(horizontal: 28),
-              //           height: 1.5,
-              //           width: double.infinity,
-              //           decoration: BoxDecoration(
-              //             // color: Colors.black54,
-              //             color: Colors.black.withAlpha(50),
-              //             borderRadius: BorderRadius.circular(12),
+              //         // SizedBox(height: 12),
+              //         // Container(
+              //         //   margin: EdgeInsets.symmetric(horizontal: 28),
+              //         //   height: 1.5,
+              //         //   width: double.infinity,
+              //         //   decoration: BoxDecoration(
+              //         //     // color: Colors.black54,
+              //         //     color: Colors.black.withAlpha(50),
+              //         //     borderRadius: BorderRadius.circular(12),
+              //         //   ),
+              //         // ),
+              //         SizedBox(height: 8),
+              //         Padding(
+              //           padding: const EdgeInsets.all(8.0),
+              //           child: Text(
+              //             meal.name.length > 15
+              //                 ? '${meal.name.substring(0, 15)}...'
+              //                 : meal.name,
+              //             style: TextStyle(fontWeight: FontWeight.bold),
               //           ),
-              //         ),
-              //         SizedBox(height: 12),
-              //         Text(
-              //           meal.name.length > 15
-              //               ? '${meal.name.substring(0, 15)}...'
-              //               : meal.name,
-              //           style: TextStyle(fontWeight: FontWeight.bold),
               //         ),
               //       ],
               //     ),
@@ -152,91 +160,109 @@ class _MealsGridState extends State<MealsGrid> {
                   );
                 },
                 child: Container(
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.15),
-                        blurRadius: 10,
-                        offset: Offset(0, 5),
-                      ),
-                    ],
+                    borderRadius: BorderRadius.circular(14),
+                    // color: Colors.grey.shade200,
+                    border: Border.all(
+                      color: Colors.grey.shade300.withAlpha(240),
+                      width: 0.9,
+                    ),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Stack(
-                      children: [
-                        ///  Image
-                        Positioned.fill(
-                          child: Image.network(meal.image, fit: BoxFit.cover),
-                        ),
-
-                        ///  Gradient Overlay
-                        Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.black.withOpacity(0.9),
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        ///  Favourite Button
-                        Positioned(
-                          top: 10,
-                          right: 10,
-                          child: GestureDetector(
-                            onTap: () {
-                              FavouritesServices().addFavourite(meal);
-                              BlocProvider.of<FavCubit>(context).fetchAllFav();
-                              setState(() {});
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.black.withOpacity(0.4),
-                              ),
-                              child: FavouritesServices().isFavourite(meal.id)
-                                  ? SvgPicture.asset(
-                                      'assets/icons/Heart.svg',
-                                      height: 27,
-                                    )
-                                  : SvgPicture.asset(
-                                      'assets/icons/Heart(1).svg',
-                                      height: 21,
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.white,
-                                        BlendMode.srcIn,
-                                      ),
-                                    ),
-                            ),
-                          ),
-                        ),
-
-                        /// 📝 Meal Name
-                        Positioned(
-                          bottom: 12,
-                          left: 12,
-                          right: 12,
-                          child: Text(
-                            meal.name,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.15),
+                          blurRadius: 10,
+                          offset: Offset(0, 5),
                         ),
                       ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          ///  Image
+                          Positioned.fill(
+                            child: Image.network(meal.image, fit: BoxFit.cover),
+                          ),
+                  
+                          ///  Gradient Overlay
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.transparent,
+                                    Colors.black.withOpacity(0.9),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                            ),
+                          ),
+                  
+                          ///  Favourite Button
+                          Positioned(
+                            top: -2,
+                            right: -2,
+                            child: GestureDetector(
+                              onTap: () {
+                                FavouritesServices().addFavourite(meal);
+                                BlocProvider.of<FavCubit>(context).fetchAllFav();
+                                setState(() {});
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                  child: Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      // color: Colors.white,
+                                    ),
+                                    child: FavouritesServices().isFavourite(meal.id)
+                                        ? SvgPicture.asset(
+                                            'assets/icons/Heart.svg',
+                                            height: 25,
+                                          )
+                                        : SvgPicture.asset(
+                                            'assets/icons/Heart(1).svg',
+                                            height: 22,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.black87,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                  
+                          ///  Meal Name
+                          Positioned(
+                            bottom: 12,
+                            left: 12,
+                            right: 12,
+                            child: Text(
+                              meal.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

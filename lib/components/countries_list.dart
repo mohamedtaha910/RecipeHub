@@ -15,7 +15,7 @@ class CountriesList extends StatelessWidget {
                       if(snapShot.connectionState == ConnectionState.waiting){
                         return CountriesShimmer();
                       }else if(snapShot.hasError){
-                        return Center(child: Text(snapShot.error.toString()),);
+                        return Center(child: Text('No countries found!'),);
                       }else if(snapShot.hasData){
                         List<String> countries = snapShot.data!;
                         return GridView.builder(
@@ -26,7 +26,7 @@ class CountriesList extends StatelessWidget {
                             crossAxisCount: 2,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
-                            childAspectRatio: 3.2
+                            childAspectRatio: 3.7
                           ),
                           itemBuilder:(context , index){
                             String country = countries[index];
@@ -41,13 +41,23 @@ class CountriesList extends StatelessWidget {
                                   // color: kLightColor.withAlpha(80),
                                   color: Colors.grey.shade200,
                                   // color: Color.fromARGB(255, 219, 221, 221),
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.grey.shade300.withAlpha(200),
+                                    width: 0.4,
+                                  ),
                                 ),
                                 child: Row(
                                   children: [
-                                    Text(country,style: TextStyle(color: Colors.black, fontSize: 16 , fontWeight: FontWeight.bold),),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.25,
+                                      child: Text(country,style: TextStyle(color: Colors.black, fontSize: 13 , fontWeight: FontWeight.bold),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
                                     Spacer(),
-                                    Icon(Icons.arrow_forward_ios,color: Colors.black,size: 16,)
+                                    Icon(Icons.chevron_right_rounded,color: Colors.black54,size: 22,)
                                   ],
                                 ),
                               )

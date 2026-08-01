@@ -53,7 +53,7 @@ class DiscoverPage extends StatelessWidget {
               SizedBox(height: 18),
               Text(
                 'Discover',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(height: 24),
               CountriesList(),
