@@ -9,14 +9,14 @@ class Instructions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Text(
           instructions,
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 17,
+            fontSize: 15,
             height: 1.8,
             color: kSecondaryColor
           ),

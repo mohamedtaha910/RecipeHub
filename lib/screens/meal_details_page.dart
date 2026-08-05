@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -72,8 +73,8 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                               gradient: LinearGradient(
                                 colors: [
                                   Colors.white,
-                                  Colors.white.withAlpha(220),
-                                  Colors.white.withAlpha(120),
+                                  Colors.white.withAlpha(215),
+                                  Colors.white.withAlpha(150),
                                   Colors.white.withAlpha(80),
                                   Colors.white.withAlpha(20),
                                   Colors.white.withAlpha(10),
@@ -106,12 +107,15 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                         Positioned(
                           bottom: 20,
                           left: 16,
-                          child: Text(
-                            detailedMeal.name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.black,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width - 32,
+                            child: Text(
+                              detailedMeal.name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -195,66 +199,39 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                       ],
                     ),
 
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        // borderRadius: BorderRadius.circular(32),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:  16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 12),
-                          Center(
-                            child: Container(
-                              width: 80,
-                              height: 5,
-                              decoration: BoxDecoration(
-                                color: Colors.black.withAlpha(30),
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20),
-
-                          /// name
-                          // Container(
-                          //   margin: EdgeInsets.symmetric(horizontal: 20),
-                          //   child: Text(
-                          //     detailedMeal.name,
-                          //     style: TextStyle(
-                          //       fontWeight: FontWeight.bold,
-                          //       fontSize: 20,
-                          //     ),
-                          //   ),
-                          // ),
+                          
                           SizedBox(height: 32),
-
+                      
                           /// category
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Row(
-                              children: [
-                                DetailsRow(
-                                  text: detailedMeal.country,
-                                  icon: Icons.flag_rounded,
-                                ),
-                                Spacer(),
-                                DetailsRow(
-                                  text: detailedMeal.category,
-                                  icon: Icons.dinner_dining_rounded,
-                                ),
-                              ],
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DetailsRow(
+                                text: detailedMeal.country,
+                                icon: Icons.flag_rounded,
+                                label: 'Country',
+                              ),
+                              Spacer(),
+                              // SizedBox(width: 12),
+                              DetailsRow(
+                                text: detailedMeal.category,
+                                icon: Icons.dinner_dining_rounded,
+                                label: 'Category',
+                              ),
+                            ],
                           ),
-
+                      
                           SizedBox(height: 24),
                           // video
                           GestureDetector(
                             onTap: () async {
                               final Uri url = Uri.parse(detailedMeal.video);
-
+                      
                               await launchUrl(
                                 url,
                                 mode: LaunchMode.externalApplication,
@@ -262,10 +239,10 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                             },
                             child: Container(
                               width: double.infinity,
-                              margin: EdgeInsets.symmetric(horizontal: 28),
+                              // margin: EdgeInsets.symmetric(horizontal: 28),
                               padding: EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 42,
+                                vertical: 10,
+                                // horizontal: 42,
                               ),
                               decoration: BoxDecoration(
                                 color: kSecondaryColor.withAlpha(200),
@@ -275,16 +252,16 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                                 children: [
                                   Spacer(),
                                   Icon(
-                                    Icons.play_arrow_rounded,
+                                    CupertinoIcons.play_circle_fill,
                                     color: Colors.white,
-                                    size: 26,
+                                    size: 28,
                                   ),
-                                  SizedBox(width: 4),
+                                  SizedBox(width: 10),
                                   Text(
                                     'Watch Video',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.white,
                                     ),
                                   ),
@@ -293,26 +270,26 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                               ),
                             ),
                           ),
-
+                      
                           SizedBox(height: 24),
-
+                      
                           /// line
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 42),
-                            height: 2,
+                            height: 1.4,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.black.withAlpha(30),
                             ),
                           ),
                           SizedBox(height: 24),
-
+                      
                           /// ingredients and instructions
                           Center(
                             child: Container(
-                              padding: EdgeInsets.all(2.5),
+                              padding: EdgeInsets.all(2),
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
+                                color: Colors.grey.shade200,
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Row(
@@ -325,25 +302,29 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                                       });
                                     },
                                     child: Container(
+                                      width: (MediaQuery.of(context).size.width * 0.5) - 18,
                                       padding: EdgeInsets.symmetric(
-                                        horizontal: 38,
-                                        vertical: 12,
+                                        // horizontal: 38,
+                                        vertical: 10,
                                       ),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: currentBody == 'ing'
-                                            ? kSecondaryColor
-                                            : Colors.grey.shade300,
+                                            ? kSecondaryColor.withAlpha(220)
+                                            : Colors.grey.shade200,
                                       ),
                                       child: Text(
                                         'Ingredients',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: currentBody == 'ing'
                                               ? Colors.white
                                               : Colors.black,
-                                          fontSize: 16,
+                                          fontSize: 15,
+                                          letterSpacing: 0.6,
                                         ),
+                                        
                                       ),
                                     ),
                                   ),
@@ -354,24 +335,28 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                                       });
                                     },
                                     child: Container(
+                                      width: (MediaQuery.of(context).size.width * 0.5)- 18,
+
                                       padding: EdgeInsets.symmetric(
-                                        horizontal: 38,
-                                        vertical: 12,
+                                        // horizontal: ,
+                                        vertical: 10,
                                       ),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: currentBody == 'ins'
-                                            ? kSecondaryColor
-                                            : Colors.grey.shade300,
+                                            ? kSecondaryColor.withAlpha(220)
+                                            : Colors.grey.shade200,
                                       ),
                                       child: Text(
                                         'Instructions',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: currentBody == 'ins'
                                               ? Colors.white
                                               : Colors.black,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 16,
+                                          fontSize: 15,
+                                          letterSpacing: 0.6
                                         ),
                                       ),
                                     ),
@@ -380,9 +365,9 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                               ),
                             ),
                           ),
-
+                      
                           SizedBox(height: 24),
-
+                      
                           currentBody == 'ing'
                               ? IngredientsList(ings: ings, qnt: qnt)
                               : Instructions(

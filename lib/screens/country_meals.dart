@@ -19,9 +19,16 @@ class CountryMeals extends StatelessWidget {
             bottomRight: Radius.circular(16),
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 184, 240, 230),
+        backgroundColor: Colors.white,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            color: Colors.grey.shade300.withAlpha(200),
+          ),
+        ),
 
         automaticallyImplyLeading: false,
         title: Row(
@@ -31,19 +38,19 @@ class CountryMeals extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios),
+              icon: Icon(Icons.arrow_back_ios_rounded, size: 20, color: Colors.black54),
             ),
             // SizedBox(width: 10,),
             Text(
               country.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold , fontSize: 18),
             ),
-            Text(' Meals', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(' Meals', style: TextStyle(fontWeight: FontWeight.bold , fontSize: 18),),
           ],
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: MealsGrid(future: RecipeServices().getMealsByCountry(country)),
       ),
     );

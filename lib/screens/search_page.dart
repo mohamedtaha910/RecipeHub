@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/components/favourite_item.dart';
 // import 'package:recipe_app/components/favourite_item.dart';
-import 'package:recipe_app/components/meals_grid.dart';
+// import 'package:recipe_app/components/meals_grid.dart';
 import 'package:recipe_app/models/meal_model.dart';
 // import 'package:recipe_app/components/favourite_item.dart';
 // import 'package:recipe_app/components/meals_grid.dart';
@@ -21,41 +21,58 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.white,
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
-        // elevation: 0,
-        // surfaceTintColor: Colors.transparent,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(0),
+          child: Container(
+            color: Colors.grey.shade300.withAlpha(200),
+            height: 0.4,
+          ),
+        ),
+        // toolbarHeight: 45,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_ios),
-            ),
-            Expanded(
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {
-                    mealName = value;
-                  });
+        title: Padding(
+          padding: const EdgeInsets.only( top:16.0),
+          child: Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
                 },
-                autofocus: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hint: Text(
-                    'Search a meal',
-                    style: TextStyle(
-                      color: Colors.black45,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                child: Icon(
+                  Icons.chevron_left_rounded,
+                  color: Colors.black54,
+                  size: 34,
+                ),
+              ),
+              SizedBox(width: 8,),
+              Expanded(
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      mealName = value;
+                    });
+                  },
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hint: Text(
+                      'Search a meal',
+                      style: TextStyle(
+                        color: Colors.black45,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: mealName.isEmpty || mealName == ''
@@ -70,7 +87,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             )
           : Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               // child: MealsGrid(future: RecipeServices().searchMeals(mealName)),
               child: FutureBuilder(
                 future: RecipeServices().searchMeals(mealName),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/constant.dart';
 // import 'package:recipe_app/constant.dart';
 
 class IngredientsList extends StatelessWidget {
@@ -29,8 +30,8 @@ class IngredientsList extends StatelessWidget {
                 // Ingredient Image
                 Container(
                   padding: const EdgeInsets.all(10),
-                  width: 75,
-                  height: 75,
+                  width: 70,
+                  height: 70,
                   decoration: BoxDecoration(
                     // borderRadius: BorderRadius.circular(18),
                     shape: BoxShape.circle,
@@ -41,7 +42,11 @@ class IngredientsList extends StatelessWidget {
                     child: Image.network(
                       'https://www.themealdb.com/images/ingredients/${ings[index]}.png',
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(Icons.image_not_supported, color: Colors.grey.shade400, size: 26);
+                      },
                     ),
+                    
                   ),
                 ),
 
@@ -56,25 +61,26 @@ class IngredientsList extends StatelessWidget {
                       Text(
                         ings[index],
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
+                          horizontal: 22,
+                          vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.orange.shade100,
+                          color: kSecondaryColor.withAlpha(40),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           qnt[index],
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
+                            color: kSecondaryColor,
                           ),
                         ),
                       ),

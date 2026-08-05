@@ -23,10 +23,10 @@ class FavouriteItem extends StatelessWidget {
         padding: EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           // color: Colors.grey.withAlpha(78),
-          color: Colors.grey.shade300,
+          color: Colors.grey.shade200,
           // color: Colors.black.withAlpha(100),
           borderRadius: BorderRadius.circular(14),
-          // border: Border.all(color: Colors.black.withAlpha(50), width: 0.5),
+          border: Border.all(color: Colors.grey.shade300.withAlpha(160), width: 0.6),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,20 +39,21 @@ class FavouriteItem extends StatelessWidget {
               child: Image.network(
                 favMeal.image,
                 // fit: BoxFit.fill,
-                // fit: BoxFit.cover,
-                width: 122,
-                height: 122,
+                fit: BoxFit.cover,
+                width: 125,
+                height: 128,
               ),
             ),
             SizedBox(width: 16),
 
-            Expanded(
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
               child: Text(
                 favMeal.name,
 
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 15,
                 ),
                 softWrap: true,
                 maxLines: 2,

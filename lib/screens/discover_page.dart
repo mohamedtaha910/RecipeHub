@@ -12,6 +12,7 @@ class DiscoverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
@@ -20,15 +21,17 @@ class DiscoverPage extends StatelessWidget {
           // mainAxisSize: MainAxisSize.max,
           children: [
             isInHomePage == true ?
-            IconButton(
-              onPressed: () {
-                
-                     Navigator.of(context).pop();
-                    
+            
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back_ios),
-            ) : SizedBox.shrink(),
-
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Icon(Icons.arrow_back_ios_rounded, size: 20, color: Colors.black54),
+              )) : 
+            SizedBox.shrink(),
+            
             Expanded(
               child: GestureDetector(
                 onTap: () {

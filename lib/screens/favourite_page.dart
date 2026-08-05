@@ -36,6 +36,7 @@ class _FavouritePageState extends State<FavouritePage> {
         favMeals = BlocProvider.of<FavCubit>(context).favMeals;
         
         return Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -50,12 +51,13 @@ class _FavouritePageState extends State<FavouritePage> {
                      Navigator.of(context).pop()  
                     ;
                   },
-                  icon: Icon(Icons.arrow_back_ios),
+                  icon: Icon(Icons.arrow_back_ios_rounded, size: 20,),
                 ) : SizedBox.shrink(),
                 // SizedBox(width: 10,),
-                // Text('Favourite Meals',style: TextStyle(fontWeight: FontWeight.bold),),
-                SvgPicture.asset('assets/text/My Favorites.svg', height: 21),
-              ],
+                Text(
+                  'My Favourites',
+                  style: TextStyle(fontWeight: FontWeight.bold , fontSize: 18),
+                ),],
             ),
           ),
           body: Padding(
