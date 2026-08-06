@@ -69,8 +69,12 @@ class IngredientsList extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: kSecondaryColor.withAlpha(40),
-                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.black.withAlpha(10),
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                          color: Colors.grey.shade400.withAlpha(150),
+                          width: 0.7
+                        )
                       ),
                       child: Text(
                         qnt[index],

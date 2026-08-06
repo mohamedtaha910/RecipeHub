@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -125,23 +127,37 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                           left: 10,
                           child: GestureDetector(
                             onTap: () => Navigator.of(context).pop(),
-                            child: Container(
-                              padding: EdgeInsets.all(1.8),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
+                            child: ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(100),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 10 , sigmaY: 10),
+                                child: Container(
+                                  padding: EdgeInsets.all(1.8),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: LinearGradient(colors: [
+                                      kSecondaryColor.withAlpha(255),
+                                      // kSecondaryColor.withAlpha(220),
+                                      kSecondaryColor.withAlpha(100),
 
-                                color: kSecondaryColor,
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.grey.withAlpha(100),
-                                    width: 0.8,
+                                    ],
+                                    begin: AlignmentGeometry.topCenter,
+                                    end: AlignmentGeometry.bottomCenter
+                                    ),
+                                    // color: kSecondaryColor.withAlpha(100),
+                                    border: Border(
+                                      top: BorderSide(
+                                        color: Colors.grey.withAlpha(100),
+                                        width: 0.8,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Icon(
+                                    Icons.chevron_left_rounded,
+                                    color: Colors.white,
+                                    size: 35,
                                   ),
                                 ),
-                              ),
-                              child: Icon(
-                                Icons.chevron_left_rounded,
-                                color: Colors.white,
-                                size: 35,
                               ),
                             ),
                           ),
@@ -160,40 +176,55 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                                 ).fetchAllFav();
                               });
                             },
-                            child: Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                // borderRadius: BorderRadius.circular(16),
-                                // color: Colors.black.withOpacity(0.4),
-                                color: kSecondaryColor,
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.grey.withAlpha(100),
-                                    width: 0.8,
-                                  ),
-                                ),
-                              ),
-                              child:
-                                  FavouritesServices().isFavourite(
-                                        widget.meal.id,
-                                      ) ==
-                                      true
-                                  ? SvgPicture.asset(
-                                      'assets/icons/Heart.svg',
-                                      height: 28,
-                                    )
-                                  : Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: SvgPicture.asset(
-                                        'assets/icons/Heart(1).svg',
-                                        height: 23,
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.white,
-                                          BlendMode.srcIn,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                child: Container(
+                                  padding: EdgeInsets.all(7),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    // borderRadius: BorderRadius.circular(16),
+                                    // color: Colors.black.withOpacity(0.4),
+                                    // color: kSecondaryColor,
+                                    gradient: LinearGradient(colors: [
+                                          kSecondaryColor.withAlpha(255),
+                                          // kSecondaryColor.withAlpha(220),
+                                          kSecondaryColor.withAlpha(100),
+                                
+                                        ],
+                                        begin: AlignmentGeometry.topCenter,
+                                        end: AlignmentGeometry.bottomCenter
                                         ),
+                                    border: Border(
+                                      top: BorderSide(
+                                        color: Colors.grey.withAlpha(100),
+                                        width: 0.8,
                                       ),
                                     ),
+                                  ),
+                                  child:
+                                      FavouritesServices().isFavourite(
+                                            widget.meal.id,
+                                          ) ==
+                                          true
+                                      ? SvgPicture.asset(
+                                          'assets/icons/Heart.svg',
+                                          height: 28,
+                                        )
+                                      : Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: SvgPicture.asset(
+                                            'assets/icons/Heart(1).svg',
+                                            height: 23,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
+                                        ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -340,10 +371,14 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                           /// ingredients and instructions
                           Center(
                             child: Container(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
                               decoration: BoxDecoration(
                                 color: Colors.grey.shade200,
                                 borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                 color: Colors.grey.shade300.withAlpha(150),
+                                width: 0.7,
+                                )
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
