@@ -27,10 +27,10 @@ class DetailsRow extends StatelessWidget {
             decoration: BoxDecoration(
               // borderRadius: BorderRadius.circular(12),
               shape: BoxShape.circle,
-              color: Colors.grey.shade300,
+              color: Colors.black.withAlpha(10),
               border: Border.all(
-                color: Colors.grey.shade400.withAlpha(200),
-                width: 0.4,
+                color: Colors.grey.shade400.withAlpha(150),
+                width: 0.6
               ),
             ),
             child: Icon(icon, size: 26, color: kSecondaryColor.withAlpha(200)),
