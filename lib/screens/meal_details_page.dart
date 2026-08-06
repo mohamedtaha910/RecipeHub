@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:recipe_app/components/details_row.dart';
 import 'package:recipe_app/components/ingredients_list.dart';
 import 'package:recipe_app/components/instructions.dart';
@@ -230,12 +231,64 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                           // video
                           GestureDetector(
                             onTap: () async {
-                              final Uri url = Uri.parse(detailedMeal.video);
-                      
-                              await launchUrl(
-                                url,
-                                mode: LaunchMode.externalApplication,
-                              );
+                              String videoUrl = detailedMeal.video;
+
+                              if (!videoUrl.startsWith('http')) {
+                               videoUrl = 'https://$videoUrl';
+                              }                                  
+                              final url = Uri.parse(videoUrl);
+                              
+
+                              if (url == Uri.parse('https://')) {
+                                return  showDialog(context: context, builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.redAccent.withAlpha(30),
+                                          ),
+                                          child: Icon(Icons.error_outline_rounded, color: Colors.redAccent, size: 42)),
+                                          SizedBox(height: 24,),
+                                        Text('Could not launch the video.'),
+                                      ],
+                                    ),
+                                    actions: [
+                                      GestureDetector(
+                                        onTap:(){
+                                          Navigator.of(context).pop();
+                                        } ,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(horizontal: 24 , vertical: 4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.black.withAlpha(20),
+                                            borderRadius: BorderRadius.circular(100),
+                                            border: Border.all(
+                                              color: Colors.grey.shade400.withAlpha(200),
+                                              width: 0.8,
+                                            )
+                                          ),
+                                          child: Text(
+                                            'Ok'
+                                          ),
+                                        ),
+                                      )
+
+                                    ],);
+                                  }
+                                                            
+                                 ) ;
+                                 
+                              } else {
+                                await launchUrl(
+                                  url,
+                                  mode: LaunchMode.externalApplication,
+                                );
+                                print(url);
+                              }
                             },
                             child: Container(
                               width: double.infinity,
