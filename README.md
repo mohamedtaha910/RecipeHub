@@ -21,23 +21,23 @@ A modern and clean Flutter application that allows users to explore delicious re
 
 | Home Screen                                        | Discover Screen                                      |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Home](assets/screenshots/home.png)               | ![Discover](assets/screenshots/discover.png)         |
+| ![Home](assets/screenshots/home.jpg)               | ![Discover](assets/screenshots/discover.jpg)         |
 
 | Search Screen                                      | Favourite Screen                                     |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Search](assets/screenshots/search.png)           | ![Favourite](assets/screenshots/favourites.png)      |
+| ![Search](assets/screenshots/search.jpg)           | ![Favourite](assets/screenshots/fav.jpg)             |
 
 | Details Screen                                     | Details2 Screen                                      |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Details](assets/screenshots/details2.png)        | ![Details2](assets/screenshots/details3.png)         |
+| ![Details](assets/screenshots/details.jpg)         | ![Details2](assets/screenshots/details2.jpg)         |
 
 | Ingrediants Screen                                 | Instructions Screen                                  |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Ingrediants](assets/screenshots/incrediants.png) | ![Instructions](assets/screenshots/instractions.png) |
+| ![Ingrediants](assets/screenshots/ingrediants.jpg) | ![Instructions](assets/screenshots/instructions.jpg) |
 
 | Profile Screen                                     | Home2 Screen                                         |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Profile](assets/screenshots/profile.png)         | ![Instructions](assets/screenshots/home2.png)        |
+| ![Profile](assets/screenshots/profile.jpg)         | ![home](assets/screenshots/home2.jpgg)               |
 
 ---
 
