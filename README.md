@@ -37,7 +37,7 @@ A modern and clean Flutter application that allows users to explore delicious re
 
 | Profile Screen                                     | Home2 Screen                                         |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Profile](assets/screenshots/profile.jpg)         | ![home](assets/screenshots/home2.jpgg)               |
+| ![Profile](assets/screenshots/profile.jpg)         | ![home](assets/screenshots/home2.jpg)                |
 
 ---
 
