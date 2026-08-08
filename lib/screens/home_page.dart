@@ -164,13 +164,13 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar:
        ClipRRect(
          borderRadius: BorderRadius.only(
-           topLeft: Radius.circular(20),
-           topRight: Radius.circular(20),
+           topLeft: Radius.circular(25),
+           topRight: Radius.circular(25),
          ),
          child: NavigationBar(
                    labelPadding: const EdgeInsets.all(0),
                    // height: 63, // emulator
-                   height: 56, // => windows
+                   height: 62, // => windows
                    labelBehavior:
                        NavigationDestinationLabelBehavior.alwaysHide,
                    animationDuration: Duration(milliseconds: 400),
