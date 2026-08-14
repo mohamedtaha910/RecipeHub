@@ -18,17 +18,17 @@ class _HomePageState extends State<HomePage> {
   List<Widget> pages = [
     HomePageBody(),
     // SearchPage(),
-    DiscoverPage( isInHomePage: false),
-    FavouritePage(isInProfile: false,),
+    DiscoverPage(isInHomePage: false),
+    FavouritePage(isInProfile: false),
     ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-      // Stack(
-      //   clipBehavior: Clip.none,
-      //   children: [
+      body:
+          // Stack(
+          //   clipBehavior: Clip.none,
+          //   children: [
           pages[currentIndex],
 
       //     Positioned(
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       //       height: 63,
       //       child: Container(
       //         decoration: BoxDecoration(
-                
+
       //           gradient: LinearGradient(
       //             begin: Alignment.bottomCenter,
       //             end: Alignment.topCenter,
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
       //                   ),
       //                   label: 'Home',
       //                 ),
-                      
+
       //                 NavigationDestination(
       //                   icon: SvgPicture.asset(
       //                     'assets/icons/Search.svg',
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
       //                   ),
       //                   label: 'Search',
       //                 ),
-                      
+
       //                 NavigationDestination(
       //                   icon: SvgPicture.asset(
       //                     'assets/icons/Heart.svg',
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
       //                   ),
       //                   label: 'Favourites',
       //                 ),
-                      
+
       //                 NavigationDestination(
       //                   icon: SvgPicture.asset(
       //                     'assets/icons/Profile.svg',
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
       //                   ),
       //                   label: 'Profile',
       //                 ),
-                    
+
       //               ],
       //             ),
       //           ),
@@ -160,95 +160,81 @@ class _HomePageState extends State<HomePage> {
       //     ),
       //   ],
       // ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(28),
+          topRight: Radius.circular(28),
+        ),
+        child: NavigationBar(
+          labelPadding: const EdgeInsets.all(0),
+          height: 63,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          indicatorShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+            // side: BorderSide(
+            //   color: const Color.fromARGB(255, 56, 75, 101),
+            //   width: 1,
+            // ),
+          ),
+          animationDuration: Duration(milliseconds: 400),
+          // indicatorColor: Colors.white.withAlpha(23),
+          indicatorColor: const Color.fromARGB(255, 56, 75, 101),
+          backgroundColor: const Color.fromARGB(255, 36, 52, 73),
+          // backgroundColor: Colors.white,
+          onDestinationSelected: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          selectedIndex: currentIndex,
+          destinations: [
+            NavigationDestination(
+              // icon: Icon(Icons.home_outlined , ),
+              icon: SvgPicture.asset(
+                'assets/icons/Menu Icon.svg',
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              ),
+              selectedIcon: SvgPicture.asset('assets/icons/Home_selected.svg'),
+              label: 'Home',
+            ),
 
-      bottomNavigationBar:
-       ClipRRect(
-         borderRadius: BorderRadius.only(
-           topLeft: Radius.circular(25),
-           topRight: Radius.circular(25),
-         ),
-         child: NavigationBar(
-                   labelPadding: const EdgeInsets.all(0),
-                   // height: 63, // emulator
-                   height: 62, // => windows
-                   labelBehavior:
-                       NavigationDestinationLabelBehavior.alwaysHide,
-                   animationDuration: Duration(milliseconds: 400),
-                   // indicatorColor: Colors.white.withAlpha(23),
-                   indicatorColor: const Color.fromARGB(255, 56, 75, 101),
-                   backgroundColor: const Color.fromARGB(255, 36, 52, 73),
-                  // backgroundColor: Colors.white,
-                   onDestinationSelected: (index) {
-                     setState(() {
-                       currentIndex = index;
-                     });
-                   },
-                   selectedIndex: currentIndex,
-                   destinations: [
-       
-                     NavigationDestination(
-                       // icon: Icon(Icons.home_outlined , ),
-                       icon: SvgPicture.asset(
-                         'assets/icons/Menu Icon.svg',
-                         colorFilter: ColorFilter.mode(
-                           Colors.white,
-                           BlendMode.srcIn,
-                         ),
-                       ),
-                       selectedIcon: SvgPicture.asset(
-                         'assets/icons/Home_selected.svg',
-                       ),
-                       label: 'Home',
-                     ),
-                     
-                     NavigationDestination(
-                       icon: SvgPicture.asset(
-                         'assets/icons/Search.svg',
-                         colorFilter: ColorFilter.mode(
-                           Colors.white,
-                           BlendMode.srcIn,
-                         ),
-                       ),
-                       selectedIcon: SvgPicture.asset(
-                         'assets/icons/Search (1)_selected.svg',
-                       ),
-                       label: 'Search',
-                     ),
-                     
-                     NavigationDestination(
-                       icon: SvgPicture.asset(
-                         'assets/icons/Heart(1).svg',
-                         height: 22.6,
-                         colorFilter: ColorFilter.mode(
-                           Colors.white,
-                           BlendMode.srcIn,
-                         ),
-                       ),
-                       selectedIcon: SvgPicture.asset(
-                         'assets/icons/Heart.svg',
-                         height: 26,
-                       ),
-                       label: 'Favourites',
-                     ),
-                     
-                     NavigationDestination(
-                       icon: SvgPicture.asset(
-                         'assets/icons/Profile.svg',
-                         colorFilter: ColorFilter.mode(
-                           Colors.white,
-                           BlendMode.srcIn,
-                         ),
-                       ),
-                       selectedIcon: SvgPicture.asset(
-                         'assets/icons/Profile (1)_selected.svg',
-                       ),
-                       label: 'Profile',
-                     ),
-                   
-                   ],
-                 ),
-       ),
-    
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                'assets/icons/Search.svg',
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              ),
+              selectedIcon: SvgPicture.asset(
+                'assets/icons/Search (1)_selected.svg',
+              ),
+              label: 'Search',
+            ),
+
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                'assets/icons/Heart(1).svg',
+                height: 22.6,
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              ),
+              selectedIcon: SvgPicture.asset(
+                'assets/icons/Heart.svg',
+                height: 26,
+              ),
+              label: 'Favourites',
+            ),
+
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                'assets/icons/Profile.svg',
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              ),
+              selectedIcon: SvgPicture.asset(
+                'assets/icons/Profile (1)_selected.svg',
+              ),
+              label: 'Profile',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

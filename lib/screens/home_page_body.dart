@@ -30,36 +30,35 @@ class _HomePageBodyState extends State<HomePageBody> {
     return SafeArea(
       // bottom: false,
       child: Scaffold(
-      
-      
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
-            
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 8),
               CustomAppBar(),
-              
+
               SizedBox(height: 28),
               // search bar
               GestureDetector(
                 onTap: () {
-                  Navigator.of(
-                    context,
-                  ).push(MaterialPageRoute(builder: (context) => DiscoverPage(isInHomePage: true,)));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DiscoverPage(isInHomePage: true),
+                    ),
+                  );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric( horizontal: 6.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
                   child: CustomSearchBar(),
                 ),
               ),
-      
+
               SizedBox(height: 28),
               // SizedBox(height: 10,),
-              // 
+              //
               SvgPicture.asset('assets/text/Categories.svg', height: 16),
-      
+
               SizedBox(height: 18),
               // CategoriesList(),
               FutureBuilder(
@@ -72,7 +71,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                   } else if (snapShot.hasData) {
                     List<CategoriesModel> categories = snapShot.data!;
                     // currentCategory = categories[0].name!;
-      
+
                     return SizedBox(
                       height: 33,
                       child: ListView.builder(
@@ -119,7 +118,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                         ? Colors.white
                                         : Colors.black.withAlpha(150),
                                     fontSize: 12,
-                                    fontWeight: FontWeight.normal
+                                    fontWeight: FontWeight.normal,
                                   ),
                                 ),
                               ),
@@ -133,11 +132,38 @@ class _HomePageBodyState extends State<HomePageBody> {
                   }
                 },
               ),
-      
-              SizedBox(height: 18),
+
+              SizedBox(height: 12),
+
               Expanded(
-                child: MealsGrid(
-                  future: RecipeServices().getMealsByCategory(currentCategory),
+                child: Stack(
+                  children: [
+                    MealsGrid(
+                      future: RecipeServices().getMealsByCategory(
+                        currentCategory,
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white,
+                              Colors.white.withAlpha(100),
+                              Colors.white.withAlpha(20),
+                              Colors.white.withAlpha(0),
+                            ],
+                            begin: AlignmentGeometry.topCenter,
+                            end: AlignmentGeometry.bottomCenter,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

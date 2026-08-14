@@ -45,7 +45,7 @@ class _MealsGridState extends State<MealsGrid> {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                SizedBox(height: 10),
+                SizedBox(height: 24),
                 GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -70,11 +70,11 @@ class _MealsGridState extends State<MealsGrid> {
                     //     // height: 500,
                     //     margin: EdgeInsets.only(bottom: 2),
                     //     // padding: EdgeInsets.only(bottom: 8 , ),
-                
+
                     //     decoration: BoxDecoration(
-                
+
                     //       borderRadius: BorderRadius.circular(borderRadius),
-                
+
                     //       // color: Color(0xFFE5E5E5),
                     //       color: Colors.grey.shade200,
                     //       boxShadow: [
@@ -198,9 +198,20 @@ class _MealsGridState extends State<MealsGrid> {
                                   Positioned.fill(
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(14),
-                                      child: Image.network(meal.image, fit: BoxFit.fill)),
+                                      child: Image.network(
+                                        meal.image,
+                                        fit: BoxFit.fill,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                              return Icon(
+                                                Icons
+                                                    .image_not_supported_rounded,
+                                              );
+                                            },
+                                      ),
+                                    ),
                                   ),
-                                                    
+
                                   ///  Gradient Overlay
                                   // Positioned.fill(
                                   //   child: Container(
@@ -216,7 +227,7 @@ class _MealsGridState extends State<MealsGrid> {
                                   //     ),
                                   //   ),
                                   // ),
-                                                    
+
                                   ///  Favourite Button
                                   Positioned(
                                     top: -2,
@@ -224,13 +235,20 @@ class _MealsGridState extends State<MealsGrid> {
                                     child: GestureDetector(
                                       onTap: () {
                                         FavouritesServices().addFavourite(meal);
-                                        BlocProvider.of<FavCubit>(context).fetchAllFav();
+                                        BlocProvider.of<FavCubit>(
+                                          context,
+                                        ).fetchAllFav();
                                         setState(() {});
                                       },
                                       child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(100),
+                                        borderRadius: BorderRadius.circular(
+                                          100,
+                                        ),
                                         child: BackdropFilter(
-                                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                          filter: ImageFilter.blur(
+                                            sigmaX: 10,
+                                            sigmaY: 10,
+                                          ),
                                           child: Container(
                                             padding: EdgeInsets.all(6),
                                             decoration: BoxDecoration(
@@ -241,7 +259,9 @@ class _MealsGridState extends State<MealsGrid> {
                                               ),
                                               // color: Colors.white,
                                             ),
-                                            child: FavouritesServices().isFavourite(meal.id)
+                                            child:
+                                                FavouritesServices()
+                                                    .isFavourite(meal.id)
                                                 ? SvgPicture.asset(
                                                     'assets/icons/Heart.svg',
                                                     height: 22,
@@ -249,38 +269,35 @@ class _MealsGridState extends State<MealsGrid> {
                                                 : SvgPicture.asset(
                                                     'assets/icons/Heart(1).svg',
                                                     height: 20,
-                                                    colorFilter: ColorFilter.mode(
-                                                      Colors.black87,
-                                                      BlendMode.srcIn,
-                                                    ),
+                                                    colorFilter:
+                                                        ColorFilter.mode(
+                                                          Colors.black87,
+                                                          BlendMode.srcIn,
+                                                        ),
                                                   ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                                    
-                                
-                                                  
                                 ],
                               ),
                             ),
                           ),
                           // SizedBox(height: 2),
-                           Padding(
-                             padding: const EdgeInsets.all(8.0),
-                             child: Text(
-                                      meal.name,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                      ),
-                                      
-                                    ),
-                           ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              meal.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     );
