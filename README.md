@@ -21,7 +21,7 @@ A modern and clean Flutter application that allows users to explore delicious re
 
 | Home Screen                                        | Discover Screen                                      |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Home](assets/screenshots/home.jpg)               | ![Discover](assets/screenshots/discover.jpg)         |
+| ![Home](assets/screenshots/beef.jpg)               | ![Discover](assets/screenshots/discover.jpg)         |
 
 | Search Screen                                      | Favourite Screen                                     |
 | -------------------------------------------------- | ---------------------------------------------------- |
@@ -37,7 +37,7 @@ A modern and clean Flutter application that allows users to explore delicious re
 
 | Profile Screen                                     | Home2 Screen                                         |
 | -------------------------------------------------- | ---------------------------------------------------- |
-| ![Profile](assets/screenshots/profile.jpg)         | ![home](assets/screenshots/home2.jpg)                |
+| ![Profile](assets/screenshots/profile.jpg)         | ![home](assets/screenshots/sea_food.jpg)             |
 
 ---
 
