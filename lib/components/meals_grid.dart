@@ -183,13 +183,13 @@ class _MealsGridState extends State<MealsGrid> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
-                                    blurRadius: 10,
-                                    offset: Offset(0, 5),
-                                  ),
-                                ],
+                                // boxShadow: [
+                                //   BoxShadow(
+                                //     color: Colors.black.withOpacity(0.15),
+                                //     blurRadius: 10,
+                                //     offset: Offset(0, 5),
+                                //   ),
+                                // ],
                               ),
                               child: Stack(
                                 clipBehavior: Clip.none,
@@ -208,6 +208,7 @@ class _MealsGridState extends State<MealsGrid> {
                                                     .image_not_supported_rounded,
                                               );
                                             },
+                                    
                                       ),
                                     ),
                                   ),

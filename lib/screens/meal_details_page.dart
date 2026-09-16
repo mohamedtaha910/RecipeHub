@@ -61,6 +61,9 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                             height: 384,
                             width: double.infinity,
                             // fit: BoxFit.fill,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Icon(Icons.image_not_supported_rounded , size: 384,);
+                            },
                           ),
                         ),
 

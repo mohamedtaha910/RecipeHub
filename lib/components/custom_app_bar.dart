@@ -11,14 +11,14 @@ class CustomAppBar extends StatelessWidget {
                 children: [
                   // SvgPicture.asset('assets/icons/Group.svg'),
                   Container(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(6),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Image.asset(
-                      'assets/icons/logo.png',
-                      height: 25,
+                      'assets/icons/chef-hat.png',
+                      height: 28,
                     ),
                   ),
                   SizedBox(width: 5),
@@ -58,14 +58,15 @@ class CustomAppBar extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         // color: Colors.grey.shade200,
-                        border: Border.all(color: Colors.grey.shade400.withAlpha(200) , width: 0.8),
+                        border: Border.all(color: Colors.grey.shade500.withAlpha(200) , width: 0.8),
                         shape: BoxShape.circle,
                         // borderRadius: BorderRadius.circular(100),
                       ),
                       child: SvgPicture.asset(
                         'assets/icons/Profile.svg',
+                        // height: 22,
                         colorFilter: ColorFilter.mode(
-                          Colors.black87,
+                          Colors.grey.shade700,
                           BlendMode.srcIn,
                         ),
                         // height: 24,

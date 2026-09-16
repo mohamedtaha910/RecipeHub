@@ -143,6 +143,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                         currentCategory,
                       ),
                     ),
+                    // shadow 
                     Positioned(
                       top: 0,
                       right: 0,
